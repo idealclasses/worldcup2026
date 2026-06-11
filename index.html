@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Cup 2026 Schedule</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>World Cup 2026 Schedule</h1>
+      <p>Browse every tournament match, check which fixtures are completed, and see who won.</p>
+    </div>
+  </header>
+
+  <main class="page-layout">
+    <section class="controls">
+      <div class="filter-group">
+        <label for="stageSelect">Stage</label>
+        <select id="stageSelect">
+          <option value="all">All stages</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="statusSelect">Match status</label>
+        <select id="statusSelect">
+          <option value="all">All matches</option>
+          <option value="scheduled">Scheduled</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div class="filter-group search-group">
+        <label for="searchInput">Search teams</label>
+        <input id="searchInput" type="search" placeholder="Search team name or venue" />
+      </div>
+    </section>
+
+    <section class="summary" id="summary"></section>
+
+    <section class="matches" id="matches"></section>
+
+    <section class="note-card">
+      <h2>About this schedule</h2>
+      <p>
+        This page shows the 2026 World Cup match plan with placeholders for the group stage and knockout bracket.
+        Completed matches display their final score and winner. Update the schedule object in <code>script.js</code>
+        to add actual match results or reflect confirmed teams.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>World Cup 2026 schedule viewer • 48-team tournament format • placeholder team slots reflect the tournament bracket</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
