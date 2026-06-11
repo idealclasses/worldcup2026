@@ -1,169 +1,31 @@
-const matchData = [
-  {
-    stage: "Group A",
-    matchNumber: 1,
-    home: "Mexico",
-    away: "Canada",
-    date: "2026-06-11",
-    time: "18:00",
-    venue: "Mexico City",
-    status: "completed",
-    score: "2 - 1",
-    winner: "Mexico"
-  },
-  {
-    stage: "Group A",
-    matchNumber: 2,
-    home: "Canada",
-    away: "United States",
-    date: "2026-06-14",
-    time: "15:00",
-    venue: "Guadalajara",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Group A",
-    matchNumber: 3,
-    home: "United States",
-    away: "Mexico",
-    date: "2026-06-18",
-    time: "20:00",
-    venue: "Monterrey",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Group B",
-    matchNumber: 1,
-    home: "Argentina",
-    away: "France",
-    date: "2026-06-12",
-    time: "20:00",
-    venue: "Toronto",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Group B",
-    matchNumber: 2,
-    home: "B2",
-    away: "B3",
-    date: "2026-06-15",
-    time: "18:00",
-    venue: "Montreal",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Group B",
-    matchNumber: 3,
-    home: "B3",
-    away: "B1",
-    date: "2026-06-19",
-    time: "21:00",
-    venue: "Vancouver",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Round of 32",
-    matchNumber: 1,
-    home: "1A",
-    away: "2B",
-    date: "2026-07-03",
-    time: "18:00",
-    venue: "Dallas",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Round of 32",
-    matchNumber: 2,
-    home: "1C",
-    away: "2D",
-    date: "2026-07-03",
-    time: "21:00",
-    venue: "Los Angeles",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Round of 16",
-    matchNumber: 1,
-    home: "Winner R32 #1",
-    away: "Winner R32 #2",
-    date: "2026-07-09",
-    time: "18:00",
-    venue: "Houston",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Quarterfinals",
-    matchNumber: 1,
-    home: "Winner R16 #1",
-    away: "Winner R16 #2",
-    date: "2026-07-14",
-    time: "20:00",
-    venue: "Philadelphia",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Semifinals",
-    matchNumber: 1,
-    home: "Winner QF #1",
-    away: "Winner QF #2",
-    date: "2026-07-19",
-    time: "20:00",
-    venue: "Atlanta",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Third Place",
-    matchNumber: 1,
-    home: "Loser SF #1",
-    away: "Loser SF #2",
-    date: "2026-07-26",
-    time: "18:00",
-    venue: "San Francisco",
-    status: "scheduled",
-    score: null,
-    winner: null
-  },
-  {
-    stage: "Final",
-    matchNumber: 1,
-    home: "Winner SF #1",
-    away: "Winner SF #2",
-    date: "2026-07-27",
-    time: "20:00",
-    venue: "New York",
-    status: "scheduled",
-    score: null,
-    winner: null
-  }
-];
-
+const yearSelect = document.getElementById("yearSelect");
 const stageSelect = document.getElementById("stageSelect");
 const statusSelect = document.getElementById("statusSelect");
 const searchInput = document.getElementById("searchInput");
 const matchesContainer = document.getElementById("matches");
 const summaryContainer = document.getElementById("summary");
 
-const stages = Array.from(new Set(matchData.map((match) => match.stage))).sort();
+let selectedYear = "2026";
+let matchData = tournaments[selectedYear] || [];
+let stages = Array.from(new Set(matchData.map((match) => match.stage))).sort();
+
+function populateYearOptions() {
+  const years = Object.keys(tournaments).sort((a, b) => Number(b) - Number(a));
+  years.forEach((year) => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  });
+  yearSelect.value = selectedYear;
+}
+
+function updateMatchData() {
+  matchData = tournaments[selectedYear] || [];
+  stages = Array.from(new Set(matchData.map((match) => match.stage))).sort();
+  stageSelect.innerHTML = "<option value='all'>All stages</option>";
+  populateStageOptions();
+}
 
 function populateStageOptions() {
   stages.forEach((stage) => {
