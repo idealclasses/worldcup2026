@@ -2,20 +2,20 @@ const matchData = [
   {
     stage: "Group A",
     matchNumber: 1,
-    home: "A1",
-    away: "A2",
+    home: "Mexico",
+    away: "Canada",
     date: "2026-06-11",
     time: "18:00",
     venue: "Mexico City",
     status: "completed",
     score: "2 - 1",
-    winner: "A1"
+    winner: "Mexico"
   },
   {
     stage: "Group A",
     matchNumber: 2,
-    home: "A2",
-    away: "A3",
+    home: "Canada",
+    away: "United States",
     date: "2026-06-14",
     time: "15:00",
     venue: "Guadalajara",
@@ -26,8 +26,8 @@ const matchData = [
   {
     stage: "Group A",
     matchNumber: 3,
-    home: "A3",
-    away: "A1",
+    home: "United States",
+    away: "Mexico",
     date: "2026-06-18",
     time: "20:00",
     venue: "Monterrey",
@@ -38,14 +38,14 @@ const matchData = [
   {
     stage: "Group B",
     matchNumber: 1,
-    home: "B1",
-    away: "B2",
+    home: "Argentina",
+    away: "France",
     date: "2026-06-12",
     time: "20:00",
     venue: "Toronto",
-    status: "completed",
-    score: "1 - 1",
-    winner: "Draw"
+    status: "scheduled",
+    score: null,
+    winner: null
   },
   {
     stage: "Group B",
